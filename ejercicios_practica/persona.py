@@ -87,3 +87,39 @@ def report(limit=0, offset=0):
     # Cerrar la conexión con la base de datos
     conn.close()
     return query_results
+
+def age_report():
+    
+    conn = sqlite3.connect(db['database'])
+    conn.row_factory = dict_factory
+    c = conn.cursor()
+
+    c.execute("""SELECT COUNT(id) AS cantidad_age, age FROM persona GROUP BY age;""")
+    
+    data_age = c.fetchall()
+
+    conn.close()
+
+    cantidad_edad = [x.get('cantidad_age') for x in data_age]
+    edades = [x.get('age') for x in data_age]
+
+    return cantidad_edad, edades
+
+
+def nationality_report(nacionalidad):
+
+    conn = sqlite3.connect(db['database'])
+    conn.row_factory = dict_factory
+    c = conn.cursor()
+
+    c.execute("""SELECT id, age FROM persona WHERE nationality = ?;""", [nacionalidad])
+    
+    data_nationality = c.fetchall()
+
+    conn.close()
+
+    info_id = [x.get('id') for x in data_nationality]
+    edades = [x.get('age') for x in data_nationality]
+    
+
+    return info_id, edades
