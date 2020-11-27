@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Primer web App</title> <meta charset="utf-8">
+        
+            <link rel="stylesheet" href="{{ url_for('static', filename='style/registro.css') }}">
+            <link rel="stylesheet" href="../../static/style/registro.css" type="text/css">
+            <meta name="viewport"
+                content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            <script src="https://kit.fontawesome.com/d604a8edc1.js" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+
+        <div class="contenedor" id="container">
+            <header>
+                     
+                <img src="{{url_for('static', filename='media/logo_johana2.png')}}" align="left"><img src="{{url_for('static', filename='media/python-5.svg')}}" align="right">
+                                             
+                <h1>
+                    <center>Infomación completa y registrada en la base de datos.</center>
+                </h1>
+                
+                <h3>
+                    <center>Pulse el botón obtener para ver la infomación completa en una tabla.</center>
+                </h3>
+                
+            </header>
+        </div>
+
+        
+        <center><div class="container my-5 text-center">
+            <button class="btn btn-danger w-100" onclick="traer()">Obtener</button>
+            <div class="mt-5"></center>
+            
+                <center>
+                    <table border="1" cellpadding="0" cellspacing="1" bordercolor="cyan" style="border-collapse:collapse;border-color:rgb(12, 12, 12);">
+                    <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">userId</th>
+                            <th scope="col">title</th>
+                            <th scope="col">completed</th>
+                        </tr>
+
+                    </thead>
+                    <tbody id="contenido">
+                         
+                    </tbody>
+                  </table>
+                </center>
+
+            </div>
+        </div>
+            <script>
+                var contenido=document.querySelector('#contenido')
+
+                function traer(){
+                    fetch('https://jsonplaceholder.typicode.com/todos')
+                    .then(res =>res.json())
+                    .then(datos => {
+                        //console.log(datos)
+                        tabla(datos)
+                    })
+                }
+                
+                function tabla(datos){
+                    console.log(datos)
+                    contenido.innerHTML = ''
+                    for (let valor of datos){
+                        contenido.innerHTML += `
+                        <tr>
+                            <th scope="row">${valor.id}</th>
+                            <td>${valor.userId}</td>
+                            <td>${valor.title}</td>
+                            <td>${valor.completed}</td>
+                        </tr>
+
+                        `
+                    }
+                }
+            </script> 
+            
+            <footer class="pie">
+                
+                <p><span style="font-size: 100%; color:  hsl(194, 99%, 44%);">
+                        <i class="fas fa-university"></span></i></span> Dirección: Puerto Madryn. CP9120 - Chubut-
+                    Argentina </span> <span
+                        style="font-size: 100%; color:  hsl(278, 99%, 44%);">
+                        </span> E-mail: johanarang@hotmail.com</p>
+
+            </footer>
+    </body>
+</html>       
+          

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Primer web App</title> <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/index.css') }}">
+        <link rel="stylesheet" href="../../static/style/index.css" type="text/css">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <script src="https://kit.fontawesome.com/d604a8edc1.js" crossorigin="anonymous"></script>
+    
+    </head>
+    <body>
+
+        <div class="contenedor" id="container">
+            <header>
+                                                  
+                
+                <img src="{{url_for('static', filename='media/logo_johana2.png')}}" align="left"><img src="{{url_for('static', filename='media/python-5.svg')}}" align="right">
+                <h1>
+
+                    <center>Títulos completados por usuario, cuyo id es pasado por parámetro</center>
+                
+                </h1>
+
+            </header>
+        </div>
+           
+
+        <div class="contenedor" id="container" align="center">
+
+        <table class="table">
+            <table border="1">
+                
+                <thead cellpadding="1.0" cellspacing="1.0">
+                        <tr>
+                            <th scope="col">Usuario consultado por id N°</th>
+                            <th scope="col">Cantidad de titulos completados</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{usuario}}</th>
+                            <th scope="row">{{total_completed}}</th>                
+                        </tr>                                   
+                    </tbody>
+
+                </thead cellpadding="0" cellspacing="0" >
+
+        </table>
+
+            
+            <footer class="pie">
+                
+                <p><span style="font-size: 100%; color:  hsl(194, 99%, 44%);">
+                        <i class="fas fa-university"></span></i></span> Dirección: Puerto Madryn. CP9120 - Chubut-
+                    Argentina </span> <span
+                        style="font-size: 100%; color:  hsl(278, 99%, 44%);">
+                        </span> E-mail: johanarang@hotmail.com</p>
+
+            </footer>
+
+        </div>
+
+    </body>    
+</html>       
+               
